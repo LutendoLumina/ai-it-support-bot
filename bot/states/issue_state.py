@@ -8,7 +8,7 @@ def issue_details_state():
     if not user_input:
         print("I didn't catch that. Could you please the issue?")
         return "ISSUE_DETAILS"
-    
+
     print("\nGot it.")
     print("Let me look into the best way to help you with this")
 

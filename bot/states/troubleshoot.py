@@ -1,3 +1,18 @@
+def handle_troubleshooting(user_input: str) -> str:
+
+    user_input = user_input.lower()
+
+    if user_input in ["yes", "y"]:
+        return "RESOLUTION"
+
+    elif user_input in ["no", "n"]:
+        print("\nThanks for confirming. \n")
+        return "ESCALATION"
+    else:
+        print("Sorry, please answer with a yes or no. \n")
+        return "TROUBLESHOOTING"
+
+
 def troubleshooting_state():
 
     print("\nLet's try a few quick troubleshooting steps.")
@@ -7,16 +22,6 @@ def troubleshooting_state():
     print("• Check all cables and connections.")
     print("• Ensure the device is powered on.")
 
-    while True:
+    response = input("Did this resolve your issue? (yes / no) \n> ")
 
-        user_input = input("Did this resolve your issue? (yes / no) \n> ").strip().lower()
-
-        if user_input in ("yes", "y"):
-            return "RESOLUTION"
-        
-        elif user_input in ("no", "n"):
-            print("\nThanks for confirming. \n")
-            return "ESCALATION"
-        
-        
-        print("Sorry, please answer with a yes or no. \n")
+    return handle_troubleshooting(response)
