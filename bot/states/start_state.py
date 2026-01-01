@@ -1,10 +1,8 @@
 def handle_start():
-
     return "CATEGORY_SELECTION"
 
 
 def start_state():
-
     # debug - print("START STATE CALLED")
 
     print("Hey there! 👋 Welcome to SmartDesk Bot.\n")

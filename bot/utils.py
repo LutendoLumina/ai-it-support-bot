@@ -6,7 +6,6 @@ FEEDBACK_FILE = "feedback.json"
 
 
 def save_feedback(rating):
-
     feedback_entry = {"rating": rating, "timestamp": datetime.now().isoformat()}
 
     # If file exists, load existing data

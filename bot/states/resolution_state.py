@@ -1,5 +1,4 @@
 def handle_resolution(user_input: str) -> str:
-
     user_input = user_input.lower()
 
     if user_input == "yes":
@@ -14,7 +13,6 @@ def handle_resolution(user_input: str) -> str:
 
 
 def resolution_state():
-
     print("\n🎉 Great news! Your issue has been resolved.")
 
     choice = input("Is there anything else I can help you with? (yes, no)\n> ")

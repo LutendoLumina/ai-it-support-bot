@@ -1,5 +1,4 @@
 def handle_escalation(user_input: str) -> str:
-
     user_input = user_input.lower()
 
     if user_input == "yes":
@@ -12,7 +11,6 @@ def handle_escalation(user_input: str) -> str:
 
 
 def escalation_state():
-
     print("\n⚠️ I’m sorry — it looks like this issue needs human assistance.")
     print("Please contact IT support with the details you provided.")
 

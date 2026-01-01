@@ -1,5 +1,4 @@
 def handle_category(user_input: str) -> str:
-
     user_input = user_input.lower()
 
     # Rule-based matching
@@ -27,7 +26,6 @@ def handle_category(user_input: str) -> str:
 
 
 def category_state():
-
     print("\nPlease select the issue you are facing: ")
     print("1: Wi-Fi not connecting")
     print("2. Password reset")

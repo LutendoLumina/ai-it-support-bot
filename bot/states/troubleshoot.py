@@ -1,5 +1,4 @@
 def handle_troubleshooting(user_input: str) -> str:
-
     user_input = user_input.lower()
 
     if user_input in ["yes", "y"]:
@@ -14,7 +13,6 @@ def handle_troubleshooting(user_input: str) -> str:
 
 
 def troubleshooting_state():
-
     print("\nLet's try a few quick troubleshooting steps.")
 
     print("\nStep 1: ")

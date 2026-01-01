@@ -8,7 +8,6 @@ from bot.states.end_state import end_state
 
 
 def handle_state(current_state):
-
     if current_state == "START":
         # debug - print("FLOW CONTROLLER ENTERED START")
         next_state = start_state()
