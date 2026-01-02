@@ -40,12 +40,8 @@ jobs:
           filter_mode: diff_context
 
       # Run MyPy (type checks)
-      - name: Reviewdog MyPy
-        uses: reviewdog/action-mypy@v1
-        with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            reporter: github-pr-review
-            level: warning
+      - name: Mypy
+        run: mypy .
 
       # Optional: Run Pytest and report test failures
       - name: Pytest
