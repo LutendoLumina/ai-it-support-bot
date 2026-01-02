@@ -183,8 +183,8 @@ This project uses **targeted unit testing** focused on logic-heavy components.
 * `category_state` — input parsing & routing
 * `flow_controller` — state transitions & fallbacks
 * `troubleshoot_state` — looping and decision logic
-* `issue_state` - free-text issue collection, proper transition to troubleshooting
-* `end state` - feedback collection, exit logic, rating validation
+* `issue_state` - free-text input handling, next state returned correctly
+* `end state` - feedback ratign is accepted, invalid input handled, session ends gracefully.
 
 **Why Not Test Everything?**
 

@@ -1,0 +1,53 @@
+name: PR Code Review
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  review:
+    name: Review code on PR
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the PR branch
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Setup Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black flake8 mypy reviewdog
+
+      # Run Black (code formatting)
+      - name: Black format check
+        run: |
+          black --check .
+        continue-on-error: true
+        # Reviewdog will report it as comments
+      - name: Reviewdog Black
+        uses: reviewdog/action-black@v1
+        with:
+          reporter: github-pr-review
+          level: warning
+          filter_mode: diff_context
+
+      # Run Flake8 (style & linting)
+      - name: Flake8 linting
+        run: flake8 . --exit-zero | reviewdog -f=flake8 -name="flake8" -reporter=github-pr-review -level=warning
+
+      # Run MyPy (type checks)
+      - name: MyPy type check
+        run: mypy . --ignore-missing-imports | reviewdog -f=mypy -name="mypy" -reporter=github-pr-review -level=warning
+
+      # Optional: Run Pytest and report test failures
+      - name: Pytest
+        run: |
+          pytest --maxfail=1 --disable-warnings -q
