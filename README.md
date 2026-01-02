@@ -1,5 +1,7 @@
 # 🤖 SmartDesk Bot (AI-Powered IT Support Chatbot)
 
+![CI](https://github.com/LutendoLumina/ai-it-support-bot/actions/workflows/ci.yml/badge.svg)
+
 ```mermaid
 flowchart TD
     A[START / GREETING] --> B[CATEGORY_SELECTION]
@@ -165,6 +167,56 @@ ai-chatbot/
 ---
 
 * Full debugging notes, lessons learned, and AI/NLU plans are in docs/debugging.md and docs/ai_plan.md.
+
+---
+
+### 🧪 Testing Strategy
+
+This project uses **targeted unit testing** focused on logic-heavy components.
+
+* Written using pytest and monkeypatch to simulate user input.
+* Ensures state transitions are correct and loops exit as expected.
+* Optional tests handle invalid input in END state
+
+**Tested Components**
+
+* `category_state` — input parsing & routing
+* `flow_controller` — state transitions & fallbacks
+* `troubleshoot_state` — looping and decision logic
+* `issue_state` - free-text issue collection, proper transition to troubleshooting
+* `end state` - feedback collection, exit logic, rating validation
+
+**Why Not Test Everything?**
+
+* Output-only states (e.g. greetings) are low risk
+* I/O-heavy loops are validated manually
+* Focus is on behavioral correctness, not line coverage
+
+### Running Tetss Locally
+
+```bash
+pytest
+
+```
+
+---
+
+### ⚙️ CI/CD & Code Quality
+
+SmartDesk Bot uses **GitHub Actions** and **pre-commit** hooks to enforce quality.
+
+**Local (Pre-commit)**
+* Black (Python formatter)
+* Prevents bad commits before push
+
+**CI Pipeline (GitHub Actions)**
+* Runs on every push & PR
+* Checks formatting (`black --check`)
+* Runs unit tests
+* Blocks broken or unformatted code
+* Successful runs show green CI badge in README
+
+This simulates `professional code review and build gates`2az, similar to industry workflows.
 
 ---
 
