@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install black flake8 mypy reviewdog
+          pip install black flake8 mypy
 
       # Run Black (code formatting)
       - name: Black format check
@@ -51,3 +51,10 @@ jobs:
       - name: Pytest
         run: |
           pytest --maxfail=1 --disable-warnings -q
+
+      - name: Run flake8 with reviewdog
+        uses: reviewdog/action-flake8@v3
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            reporter: github-pr-review
+
