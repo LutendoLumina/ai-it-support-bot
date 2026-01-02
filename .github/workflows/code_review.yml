@@ -39,10 +39,6 @@ jobs:
           level: warning
           filter_mode: diff_context
 
-      # Run Flake8 (style & linting)
-      - name: Flake8 linting
-        run: flake8 . --exit-zero | reviewdog -f=flake8 -name="flake8" -reporter=github-pr-review -level=warning
-
       # Run MyPy (type checks)
       - name: MyPy type check
         run: mypy . --ignore-missing-imports | reviewdog -f=mypy -name="mypy" -reporter=github-pr-review -level=warning
@@ -52,9 +48,11 @@ jobs:
         run: |
           pytest --maxfail=1 --disable-warnings -q
 
-      - name: Run flake8 with reviewdog
+      # Use Reviewdog Github Action
+      - name: Flake8 (PR review comments)
         uses: reviewdog/action-flake8@v3
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             reporter: github-pr-review
+            level: warning
 
