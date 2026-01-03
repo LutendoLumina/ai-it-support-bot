@@ -45,9 +45,8 @@ jobs:
 
       # Optional: Run Pytest and report test failures
       - name: Pytest
-        run: |
-          pytest --maxfail=1 --disable-warnings -q
-
+        run: pytest
+        
       # Use Reviewdog Github Action
       - name: Flake8 (PR review comments)
         uses: reviewdog/action-flake8@v3
