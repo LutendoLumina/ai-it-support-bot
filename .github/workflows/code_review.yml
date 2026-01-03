@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install black flake8 mypy
+          pip install -r requirements.txt
 
       # Run Black (code formatting)
       - name: Black format check
@@ -44,9 +44,9 @@ jobs:
         run: mypy .
 
       # Optional: Run Pytest and report test failures
-      - name: Pytest
+      - name: Run tests
         run: pytest
-        
+
       # Use Reviewdog Github Action
       - name: Flake8 (PR review comments)
         uses: reviewdog/action-flake8@v3
